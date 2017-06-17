@@ -109,6 +109,7 @@ plt.hist(dist_test, bins=200, normed=True, color=pal[1], range=[0,200], label='t
 plt.title('histogram of the repartition of the questions in length')
 plt.xlabel('number of characters in question')
 plt.ylabel('Probability')
+plt.legend()
 plt.show()
 
 print("mean-train: {}\nstd-train:{}\nmax-train: {}\n\nmean-test: {}\nstd-test : {}\nmax-test: {}".format(dist_train.mean(), dist_train.std(), dist_train.max(), dist_test.mean(), dist_test.std(), dist_test.max()))
@@ -187,8 +188,8 @@ def match_words_share (row):
         # only stopwrods generated questions
         return 0
     q1words_match = [w for w in q1words.keys() if w in q2words]
-    q1words_match = [w for w in q2words.keys() if w in q1words]
-    R = (len(q1words_match) + len(q1words_match)) / (len(q1words) + len(q2words))
+    q2words_match = [w for w in q2words.keys() if w in q1words]
+    R = (len(q1words_match) + len(q2words_match)) / (len(q1words) + len(q2words))
 
     return R
 
